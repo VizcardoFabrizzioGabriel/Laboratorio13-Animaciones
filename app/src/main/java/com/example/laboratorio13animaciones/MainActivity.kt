@@ -12,126 +12,153 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.laboratorio13animaciones.ui.theme.Laboratorio13AnimacionesTheme
 
-private val BackgroundDark = Color(0xFF080D19)
-private val CardDark = Color(0xFF141E30)
-private val NeonBlue = Color(0xFF38BDF8)
-private val NeonPurple = Color(0xFF9B8CFF)
-private val TextWhite = Color(0xFFF1F5F9)
-private val TextMuted = Color(0xFF94A3B8)
+private val Cream = Color(0xFFF6F2EC)
+private val Burgundy = Color(0xFF852E45)
+private val DeepBurgundy = Color(0xFF642238)
+private val Plum = Color(0xFF72516F)
+private val LightPlum = Color(0xFFEAE1EA)
+private val Charcoal = Color(0xFF29242A)
+private val Muted = Color(0xFF89818A)
+private val White = Color(0xFFFFFDFC)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
 
         setContent {
             Laboratorio13AnimacionesTheme {
-                MotionStudioScreen()
+                ElanScreen()
             }
         }
     }
 }
 
 @Composable
-fun MotionStudioScreen() {
+fun ElanScreen() {
 
     var visible by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                Brush.verticalGradient(
-                    colors = listOf(
-                        BackgroundDark,
-                        Color(0xFF101A2D),
-                        Color(0xFF090E19)
-                    )
-                )
-            )
+            .background(Cream)
             .statusBarsPadding()
             .navigationBarsPadding()
-            .padding(horizontal = 24.dp, vertical = 20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(horizontal = 26.dp, vertical = 22.dp),
+        horizontalAlignment = Alignment.Start
     ) {
 
-        // ENCABEZADO
+        // HEADER
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
-                Text(
-                    text = "MOTION STUDIO",
-                    color = NeonBlue,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 3.sp
-                )
+            Text(
+                text = "ÉLAN",
+                color = Burgundy,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = 5.sp
+            )
 
-                Text(
-                    text = "Animated Visibility",
-                    color = TextWhite,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            Box(
-                modifier = Modifier
-                    .size(46.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFF1C2D45)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "01",
-                    color = NeonBlue,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
+            Text(
+                text = "MOTION SERIES  /  01",
+                color = Muted,
+                fontSize = 9.sp,
+                letterSpacing = 1.5.sp
+            )
         }
+
+        Spacer(modifier = Modifier.height(35.dp))
+
+        // TITLE
+        Text(
+            text = "The art of",
+            color = Charcoal,
+            fontSize = 35.sp,
+            fontWeight = FontWeight.Light
+        )
+
+        Text(
+            text = "being present.",
+            color = Burgundy,
+            fontSize = 35.sp,
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Laboratorio 13 / Jetpack Compose",
-            color = TextMuted,
-            fontSize = 13.sp,
-            modifier = Modifier.align(Alignment.Start)
+            text = "Una experiencia de movimiento y elegancia.",
+            color = Muted,
+            fontSize = 13.sp
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
-        // PANEL PRINCIPAL
-        Card(
+        // DECORATIVE DIVIDER
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(1.dp)
+                    .background(Color(0xFFD8CDD0))
+            )
+
+            Text(
+                text = "01",
+                color = Burgundy,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(horizontal = 14.dp)
+            )
+
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(1.dp)
+                    .background(Color(0xFFD8CDD0))
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // ANIMATION CARD
+        Surface(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
-            shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = CardDark
-            )
+            shape = RoundedCornerShape(26.dp),
+            color = White,
+            shadowElevation = 3.dp
         ) {
 
             Column(
@@ -141,56 +168,41 @@ fun MotionStudioScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                // ESTADO DE ANIMACIÓN
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "ANIMATION PREVIEW",
-                        color = TextMuted,
-                        fontSize = 11.sp,
+                        text = "VISUAL EXPERIENCE",
+                        color = Muted,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 1.5.sp
                     )
 
-                    Surface(
-                        shape = RoundedCornerShape(50),
-                        color = if (visible)
-                            Color(0xFF123B39)
-                        else
-                            Color(0xFF352333)
-                    ) {
-                        Text(
-                            text = if (visible) "VISIBLE" else "HIDDEN",
-                            color = if (visible)
-                                Color(0xFF4ADE80)
-                            else
-                                Color(0xFFF472B6),
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(
-                                horizontal = 12.dp,
-                                vertical = 6.dp
+                    Box(
+                        modifier = Modifier
+                            .size(9.dp)
+                            .clip(CircleShape)
+                            .background(
+                                if (visible) Burgundy else Plum
                             )
-                        )
-                    }
+                    )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(18.dp))
 
-                // ÁREA DE ANIMACIÓN
+                // ANIMATION AREA
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f)
-                        .clip(RoundedCornerShape(22.dp))
-                        .background(Color(0xFF0C1525)),
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color(0xFFF2ECF0)),
                     contentAlignment = Alignment.Center
                 ) {
 
-                    // COLUMN PROPORCIONA EL CONTEXTO COLUMN SCOPE
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -201,188 +213,200 @@ fun MotionStudioScreen() {
                         AnimatedVisibility(
                             visible = visible,
                             enter = fadeIn(
-                                animationSpec = tween(650)
+                                animationSpec = tween(600)
                             ) + scaleIn(
-                                initialScale = 0.75f,
-                                animationSpec = spring(
-                                    dampingRatio = 0.65f,
-                                    stiffness = 180f
-                                )
+                                initialScale = 0.85f,
+                                animationSpec = tween(600)
                             ) + slideInVertically(
-                                initialOffsetY = { it / 3 },
-                                animationSpec = tween(650)
+                                initialOffsetY = { it / 6 },
+                                animationSpec = tween(600)
                             ),
                             exit = fadeOut(
-                                animationSpec = tween(350)
+                                animationSpec = tween(400)
                             ) + scaleOut(
-                                targetScale = 0.80f,
-                                animationSpec = tween(350)
+                                targetScale = 0.9f,
+                                animationSpec = tween(400)
                             ) + slideOutVertically(
-                                targetOffsetY = { it / 4 },
-                                animationSpec = tween(350)
+                                targetOffsetY = { it / 6 },
+                                animationSpec = tween(400)
                             )
                         ) {
 
-                            Card(
+                            Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 20.dp),
-                                shape = RoundedCornerShape(24.dp),
-                                colors = CardDefaults.cardColors(
-                                    containerColor = Color(0xFF1B2D48)
-                                )
+                                    .padding(horizontal = 16.dp)
+                                    .clip(RoundedCornerShape(22.dp))
+                                    .background(Burgundy)
+                                    .padding(
+                                        horizontal = 20.dp,
+                                        vertical = 28.dp
+                                    ),
+                                horizontalAlignment = Alignment.CenterHorizontally
                             ) {
 
-                                Column(
+                                // DECORATIVE CIRCLE
+                                Box(
                                     modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(24.dp),
-                                    horizontalAlignment = Alignment.CenterHorizontally
+                                        .size(72.dp)
+                                        .clip(CircleShape)
+                                        .background(White.copy(alpha = 0.13f))
+                                        .border(
+                                            width = 1.dp,
+                                            color = White.copy(alpha = 0.35f),
+                                            shape = CircleShape
+                                        ),
+                                    contentAlignment = Alignment.Center
                                 ) {
-
-                                    Box(
-                                        modifier = Modifier
-                                            .size(62.dp)
-                                            .clip(RoundedCornerShape(20.dp))
-                                            .background(
-                                                Brush.linearGradient(
-                                                    listOf(
-                                                        NeonBlue,
-                                                        NeonPurple
-                                                    )
-                                                )
-                                            ),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(
-                                            text = "✦",
-                                            color = Color.White,
-                                            fontSize = 32.sp
-                                        )
-                                    }
-
-                                    Spacer(
-                                        modifier = Modifier.height(18.dp)
-                                    )
-
                                     Text(
-                                        text = "Animation Active",
-                                        color = TextWhite,
-                                        fontSize = 20.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-
-                                    Spacer(
-                                        modifier = Modifier.height(8.dp)
-                                    )
-
-                                    Text(
-                                        text = "The element is now visible",
-                                        color = TextMuted,
-                                        fontSize = 12.sp
-                                    )
-
-                                    Spacer(
-                                        modifier = Modifier.height(18.dp)
-                                    )
-
-                                    Text(
-                                        text = "FADE + SCALE + SLIDE",
-                                        color = NeonBlue,
-                                        fontSize = 10.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        letterSpacing = 1.sp
+                                        text = "É",
+                                        color = White,
+                                        fontSize = 39.sp,
+                                        fontWeight = FontWeight.Light
                                     )
                                 }
+
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                Text(
+                                    text = "A moment of elegance",
+                                    color = White,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Center
+                                )
+
+                                Spacer(modifier = Modifier.height(9.dp))
+
+                                Text(
+                                    text = "Every detail finds its place.",
+                                    color = White.copy(alpha = 0.75f),
+                                    fontSize = 12.sp,
+                                    textAlign = TextAlign.Center
+                                )
+
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                Box(
+                                    modifier = Modifier
+                                        .width(35.dp)
+                                        .height(2.dp)
+                                        .background(White.copy(alpha = 0.7f))
+                                )
                             }
                         }
 
-                        // MENSAJE CUANDO NO HAY ELEMENTO VISIBLE
                         if (!visible) {
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "◌",
-                                    color = TextMuted,
-                                    fontSize = 48.sp
+                                    text = "01",
+                                    color = Plum,
+                                    fontSize = 52.sp,
+                                    fontWeight = FontWeight.Light
                                 )
 
-                                Spacer(
-                                    modifier = Modifier.height(12.dp)
-                                )
+                                Spacer(modifier = Modifier.height(8.dp))
 
                                 Text(
-                                    text = "Waiting for animation",
-                                    color = TextMuted,
-                                    fontSize = 14.sp
+                                    text = "A space for something beautiful",
+                                    color = Muted,
+                                    fontSize = 12.sp,
+                                    textAlign = TextAlign.Center
                                 )
                             }
                         }
                     }
                 }
 
-                Spacer(modifier = Modifier.height(22.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                Text(
-                    text = "CONTROL PANEL",
-                    color = TextMuted,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 2.sp,
-                    modifier = Modifier.align(Alignment.Start)
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-
-                Button(
-                    onClick = { visible = !visible },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(54.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (visible)
-                            Color(0xFF293B55)
-                        else
-                            Color(0xFF1676B8)
-                    )
+                // STATE INFORMATION
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = if (visible)
-                            "OCULTAR ELEMENTO"
-                        else
-                            "MOSTRAR ELEMENTO",
+                        text = "ELEMENT STATE",
+                        color = Muted,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
+                    )
+
+                    Text(
+                        text = if (visible) "VISIBLE" else "HIDDEN",
+                        color = if (visible) Burgundy else Plum,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 1.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(14.dp))
 
-                Text(
-                    text = "Pulsa el botón para iniciar la transición",
-                    color = TextMuted,
-                    fontSize = 11.sp
-                )
+                // INTERACTION BUTTON
+                Button(
+                    onClick = {
+                        visible = !visible
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(55.dp),
+                    shape = RoundedCornerShape(14.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (visible) Plum else Burgundy
+                    )
+                ) {
+                    Text(
+                        text = if (visible)
+                            "HIDE EXPERIENCE"
+                        else
+                            "REVEAL EXPERIENCE",
+                        color = White,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.5.sp
+                    )
+                }
             }
         }
 
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
-        Text(
-            text = "JETPACK COMPOSE • ANIMATION MODULE",
-            color = TextMuted,
-            fontSize = 10.sp,
-            letterSpacing = 1.sp
-        )
+        // FOOTER
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "JETPACK COMPOSE",
+                color = Muted,
+                fontSize = 9.sp,
+                letterSpacing = 1.5.sp
+            )
+
+            Text(
+                text = "ANIMATION STUDY",
+                color = Burgundy,
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.sp
+            )
+        }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    name = "ÉLAN - Minimalist Motion"
+)
 @Composable
-fun MotionStudioPreview() {
+fun ElanPreview() {
     Laboratorio13AnimacionesTheme {
-        MotionStudioScreen()
+        ElanScreen()
     }
 }
