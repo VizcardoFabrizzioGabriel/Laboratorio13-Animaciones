@@ -155,7 +155,7 @@ fun CombinedAnimationsScreen() {
             )
 
             Text(
-                text = "combinadas",
+                text = "combinadas - Fabrizzio Vizcardo",
                 color = Plum,
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Medium
